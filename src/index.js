@@ -18,7 +18,8 @@ client.on("ready", () => {
 client.on("message", message => {
   if (message.author.bot) return;
 
-  if (message.content.toLowerCase().includes("sus") || 
+  if (
+    message.content.toLowerCase().includes("sus") || 
     message.content.toLowerCase().includes("sussy") || 
     message.content.toLowerCase().includes("amongus") || 
     message.content.toLowerCase().includes("amugus") || 
