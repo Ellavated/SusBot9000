@@ -28,4 +28,4 @@ client.on("message", message => {
   ) {
     message.reply("HAHAH sus xD");
   }
-})
+});
