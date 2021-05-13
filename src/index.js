@@ -29,7 +29,6 @@ client.on("message", message => {
   if (message.author.bot || !message.guild) return;
 
   const args = message.content.toLowerCase().split(" ");
-  console.log(args);
   for (var i in phrases) {
     if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
   }
