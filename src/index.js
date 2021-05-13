@@ -5,6 +5,16 @@ const {
 const client = new Client();
 const token = process.env.TOKEN;
 
+const phrases = [
+  "sus",
+  "sussy",
+  "amongus",
+  "amugus",
+  "amoungus",
+  "amoung us"
+];
+
+
 client.login(token);
 
 client.on("ready", () => {
@@ -18,14 +28,9 @@ client.on("ready", () => {
 client.on("message", message => {
   if (message.author.bot || !message.guild) return;
 
-  if (
-    message.content.toLowerCase().includes("sus") || 
-    message.content.toLowerCase().includes("sussy") || 
-    message.content.toLowerCase().includes("amongus") || 
-    message.content.toLowerCase().includes("amugus") || 
-    message.content.toLowerCase().includes("amongus") || 
-    message.content.toLowerCase().includes("among us")
-  ) {
-    message.reply("HAHAH sus xD");
+  const args = message.content.toLowerCase().split(" ");
+  console.log(args);
+  for (var i in phrases) {
+    if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
   }
 });
