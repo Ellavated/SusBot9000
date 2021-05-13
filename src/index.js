@@ -11,8 +11,8 @@ const phrases = [
   "amongus",
   "amugus",
   "amoungus",
-  "amoung us",
-  "amog us"
+  "amoung",
+  "amog"
 ];
 
 
