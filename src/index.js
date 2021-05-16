@@ -15,6 +15,9 @@ const phrases = [
   "amog"
 ];
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 
 client.login(token);
 
@@ -40,5 +43,10 @@ client.on("message", message => {
   const args = message.content.toLowerCase().split(" ");
   for (var i in phrases) {
     if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
+  }
+
+  let num = getRandomInt(1, 11);
+  if (num == 5) {
+    message.channel.send(`${message.author} is the sussy imposter 👀👀`);
   }
 });
