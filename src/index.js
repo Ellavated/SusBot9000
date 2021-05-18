@@ -47,8 +47,8 @@ client.on("message", message => {
     if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
   }
 
-  let num = getRandomInt(1, 11);
+  let num = getRandomInt(1, 21);
   if (num == 5) {
-    message.channel.send(`${message.author} is the sussy imposter 👀👀`);
+    message.channel.send(`${message.author} is lookin kinda sussy 😳`);
   }
 });
