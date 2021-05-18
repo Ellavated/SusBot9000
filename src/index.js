@@ -25,6 +25,7 @@ client.login(token);
 
 client.on("ready", () => {
   console.log(`${client.user.username} | now online!`);
+  console.log(`I am in ${client.guilds.cache.size} servers`);
 
   client.user.setActivity("the hit game Among Us", {
     type: "PLAYING"
