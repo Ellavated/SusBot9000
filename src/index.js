@@ -12,7 +12,9 @@ const phrases = [
   "amugus",
   "amoungus",
   "amoung",
-  "amog"
+  "amog",
+  "imposter",
+  "impasta"
 ];
 
 function getRandomInt(min, max) {
@@ -48,8 +50,8 @@ client.on("message", message => {
     if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
   }
 
-  let num = getRandomInt(1, 21);
-  if (num == 5) {
+  let num = getRandomInt(1, 51);
+  if (num == 10) {
     message.channel.send(`${message.author} is lookin kinda sussy 😳`);
   }
 });
