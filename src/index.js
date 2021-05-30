@@ -35,7 +35,7 @@ client.on("ready", () => {
 });
 
 client.on("guildCreate", guild => {
-  console.log(`${client.user.username} | Added to guild ${guild.name} by ${guild.owner.nickname}`);
+  console.log(`${client.user.username} | Added to guild ${guild.name}`);
 });
 
 client.on("guildDelete", guild => {
