@@ -1,6 +1,6 @@
 require("dotenv").config();
 const {
-  Client
+  Client, MessageEmbed
 } = require("discord.js");
 const client = new Client();
 const token = process.env.TOKEN;
@@ -47,6 +47,16 @@ client.on("message", message => {
   if (message.channel.type != "text") return;
 
   const args = message.content.toLowerCase().split(" ");
+  if (args[0] == "-help") {
+    let embed = new MessageEmbed()
+      .setColor("RED")
+      .setTitle(`Help for ${client.user.username}`)
+      .setThumbnail(client.user.displayAvatarURL())
+      .setDescription("To use to bot simply type 'sus'! There is even a rare chance for a special message when you type :3")
+      .setFooter(`Created by LunaTheFloof#8447`)
+      .setTimestamp();
+    message.channel.send(embed);
+  }
   for (var i in phrases) {
     if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
   }
