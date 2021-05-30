@@ -44,6 +44,7 @@ client.on("guildDelete", guild => {
 
 client.on("message", message => {
   if (message.author.bot || !message.guild) return;
+  if (message.channel.type != "text") return;
 
   const args = message.content.toLowerCase().split(" ");
   for (var i in phrases) {
