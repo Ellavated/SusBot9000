@@ -47,6 +47,7 @@ client.on("message", message => {
   if (message.channel.type != "text") return;
 
   const args = message.content.toLowerCase().split(" ");
+  // help command
   if (args[0] == "-help") {
     let embed = new MessageEmbed()
       .setColor("RED")
@@ -57,10 +58,11 @@ client.on("message", message => {
       .setTimestamp();
     message.channel.send(embed);
   }
+
+
   for (var i in phrases) {
     if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
   }
-
   let num = getRandomInt(1, 51);
   if (num == 10) {
     message.channel.send(`${message.author} is lookin kinda sussy 😳`);
