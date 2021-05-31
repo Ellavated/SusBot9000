@@ -56,7 +56,34 @@ client.on("message", message => {
       .setDescription("To use to bot simply type 'sus'! There is even a rare chance for a special message when you type :3")
       .setFooter(`Created by LunaTheFloof#8447`)
       .setTimestamp();
-    message.channel.send(embed);
+    return message.channel.send(embed);
+  } else if (args[0] == "-count") {
+    if (message.author.id != "136631672425807872") return;
+    let embed = new MessageEmbed()
+      .setColor("RED")
+      .setTitle("Server Count!")
+      .setThumbnail(client.user.displayAvatarURL())
+      .setDescription(`Counts the number of servers the bot is in`)
+      .addFields(
+        {
+          name: 'Total Servers',
+          value: client.guilds.cache.size,
+          inline: true
+        },
+        {
+          name: 'Total Channels',
+          value: client.channels.cache.size,
+          inline: true,
+        },
+        {
+          name: 'Total Users',
+          value: client.users.cache.size,
+          inline: true
+        }
+      )
+      .setFooter(`Created by LunaTheFloof#8447`)
+      .setTimestamp();
+    return message.channel.send(embed);
   }
 
 
