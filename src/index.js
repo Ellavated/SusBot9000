@@ -92,6 +92,9 @@ client.on("message", message => {
   }
   let num = getRandomInt(1, 51); // returns any integer between 1 and 50.
   switch (num) {
+    case 20:
+      message.channel.send(`${message.author} is a bit of a sussy baka >_<`);
+      return;
     case 10:
       message.channel.send(`${message.author} is looking kinda sussy 😳`);
       return;
