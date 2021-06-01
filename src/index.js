@@ -57,7 +57,7 @@ client.on("message", message => {
       .setFooter(`Created by LunaTheFloof#8447`)
       .setTimestamp();
     return message.channel.send(embed);
-  } else if (args[0] == "-count") {
+  } else if (args[0] == "-count") { // count command
     if (message.author.id != "136631672425807872") return;
     let embed = new MessageEmbed()
       .setColor("RED")
