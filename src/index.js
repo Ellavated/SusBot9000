@@ -18,6 +18,13 @@ const phrases = [
   "impasta"
 ];
 
+const replies = [
+  "haha sus xD", 
+  "yoo thats kinda sus bro", 
+  "is the sussy imposter lmao",
+  "vented in electrical"
+];
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -88,7 +95,7 @@ client.on("message", message => {
   }
 
   for (let i in phrases) {
-    if (args.includes(phrases[i].toLowerCase())) return message.reply("haha sus xD");
+    if (args.includes(phrases[i].toLowerCase())) return message.reply(`${replies[Math.floor(Math.random() * replies.length)]}`);
   }
   let num = getRandomInt(1, 51); // returns any integer between 1 and 50.
   switch (num) {
