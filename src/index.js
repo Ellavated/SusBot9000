@@ -6,6 +6,8 @@ const client = new Client();
 const token = process.env.TOKEN;
 const owner_id = "136631672425807872";
 
+// Array<String> here
+
 const phrases = [
   "sus",
   "sussy",
@@ -24,6 +26,8 @@ const replies = [
   "is the sussy imposter lmao",
   "vented in electrical"
 ];
+
+// functions here
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
