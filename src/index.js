@@ -66,36 +66,60 @@ client.on("message", message => {
         .setTitle(`Help for ${client.user.username}`)
         .setThumbnail(client.user.displayAvatarURL())
         .setDescription("To use to bot simply type 'sus'! There is even a rare chance for a special message when you type :3")
+        .addField("Commands", "\`-about\` - gives info about the bot")
         .setFooter(`Created by LunaTheFloof#8447`)
         .setTimestamp();
       return message.channel.send(helpEmbed);
-    case "-count": // count command
-      if (message.author.id != owner_id) return;
-      let countEmbed = new MessageEmbed()
-        .setColor("RED")
-        .setTitle("Server Count!")
-        .setThumbnail(client.user.displayAvatarURL())
-        .setDescription(`Counts the number of servers the bot is in`)
-        .addFields(
-          {
-            name: 'Total Servers',
-            value: client.guilds.cache.size,
-            inline: true
-          },
-          {
-            name: 'Total Channels',
-            value: client.channels.cache.size,
-            inline: true,
-          },
-          {
-            name: 'Total Users',
-            value: client.users.cache.size,
-            inline: true
-          }
-        )
-        .setFooter(`Created by LunaTheFloof#8447`)
-        .setTimestamp();
-      return message.channel.send(countEmbed);
+    case "-about": // about command
+      let aboutEmbed = new MessageEmbed()
+          .setColor("PURPLE")
+          .setTitle("About me")
+          .setThumbnail(client.user.displayAvatarURL())
+          .addFields(
+            {
+              name: "Servers",
+              value: `Serving ${client.guilds.cache.size} servers.`,
+              inline: true
+            },
+            {
+              name: "Channels",
+              value: `Observing ${client.channels.cache.size} channels`,
+              inline: true
+            },
+            {
+              name: "Users",
+              value: `Watching ${client.users.cache.size} users`,
+              inline: true
+            },
+            {
+              name: "Ping",
+              value: `${Math.round(client.ws.ping)}ms`,
+              inline: true
+            },
+            {
+              name: "Join Data",
+              value: client.user.createdAt,
+              inline: true
+            },
+            {
+              name: "Creator's tag",
+              value: "LunaTheFloof#8447",
+              inline: true
+            },
+            {
+              name: "Invite Link",
+              value: "[Link](https://discord.com/api/oauth2/authorize?client_id=837901615612559401&permissions=330816&scope=bot)",
+              inline: true
+            },
+            {
+              name: "GitHub Repository",
+              value: "[Link](https://github.com/LunasAWolf/SusBot9000)",
+              inline: true
+            }
+          )
+          .setFooter("Created by LunaTheFloof#8447")
+          .setTimestamp();
+      return message.channel.send(aboutEmbed);
   }
 
   for (let i in phrases) {
