@@ -125,7 +125,7 @@ client.on("message", message => {
   for (let i in phrases) {
     if (args.includes(phrases[i].toLowerCase())) return message.reply(`${replies[Math.floor(Math.random() * replies.length)]}`);
   }
-  let num = getRandomInt(1, 51); // returns any integer between 1 and 50.
+  let num = getRandomInt(1, 101); // returns any integer between 1 and 50.
   switch (num) {
     case 20:
       message.channel.send(`${message.author} is a bit of a sussy baka >_<`);
