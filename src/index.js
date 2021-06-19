@@ -78,32 +78,32 @@ client.on("message", message => {
           .addFields(
             {
               name: "Servers",
-              value: `Serving ${client.guilds.cache.size} servers.`,
+              value: `\`Serving ${client.guilds.cache.size} servers.\``,
               inline: true
             },
             {
               name: "Channels",
-              value: `Observing ${client.channels.cache.size} channels`,
+              value: `\`Observing ${client.channels.cache.size} channels\``,
               inline: true
             },
             {
               name: "Users",
-              value: `Watching ${client.users.cache.size} users`,
+              value: `\`Watching ${client.users.cache.size} users\``,
               inline: true
             },
             {
               name: "Ping",
-              value: `${Math.round(client.ws.ping)}ms`,
+              value: `\`${Math.round(client.ws.ping)}ms\``,
               inline: true
             },
             {
               name: "Join Data",
-              value: client.user.createdAt,
+              value: `\`${client.user.createdAt}\``,
               inline: true
             },
             {
               name: "Creator's tag",
-              value: "LunaTheFloof#8447",
+              value: "\`LunaTheFloof#8447\`",
               inline: true
             },
             {
