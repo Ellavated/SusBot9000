@@ -54,7 +54,7 @@ client.on("guildDelete", guild => {
   console.log(`${client.user.username} | Removed from guild ${guild.name}`);
 });
 
-client.on("message", message => {
+client.on("message", async message => {
   if (message.author.bot || !message.guild) return;
   if (!message.guild.me.hasPermission("SEND_MESSAGES") || !message.guild.me.hasPermission("VIEW_CHANNEL")) return; // this was an actual issue in servers for some reason
 
