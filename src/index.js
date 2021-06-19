@@ -4,7 +4,6 @@ const {
 } = require("discord.js");
 const client = new Client();
 const token = process.env.TOKEN;
-const owner_id = "136631672425807872";
 
 // Array<String> here
 
