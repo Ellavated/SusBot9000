@@ -16,7 +16,8 @@ const phrases = [
   "amoung",
   "amog",
   "imposter",
-  "impasta"
+  "impasta",
+  "amogus"
 ];
 
 const replies = [
