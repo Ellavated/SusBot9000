@@ -69,7 +69,7 @@ client.on("message", async message => {
         .addField("Commands", "\`-about\` - gives info about the bot")
         .setFooter(`Created by LunaTheFloof#8447`)
         .setTimestamp();
-      return message.channel.send(helpEmbed);
+      return message.channel.send(helpEmbed).catch(err => console.log(`There was an error running the help command. ${err}`));
     case "-about": // about command
       let aboutEmbed = new MessageEmbed()
           .setColor("PURPLE")
@@ -78,32 +78,32 @@ client.on("message", async message => {
           .addFields(
             {
               name: "Servers",
-              value: `\`Serving ${client.guilds.cache.size} servers.\``,
+              value: `\`\`\`Serving ${client.guilds.cache.size} servers.\`\`\``,
               inline: true
             },
             {
               name: "Channels",
-              value: `\`Observing ${client.channels.cache.size} channels\``,
+              value: `\`\`\`Observing ${client.channels.cache.size} channels\`\`\``,
               inline: true
             },
             {
               name: "Users",
-              value: `\`Watching ${client.users.cache.size} users\``,
+              value: `\`\`\`Watching ${client.users.cache.size} users\`\`\``,
               inline: true
             },
             {
               name: "Ping",
-              value: `\`${Math.round(client.ws.ping)}ms\``,
+              value: `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``,
               inline: true
             },
             {
               name: "Join Data",
-              value: `\`${client.user.createdAt}\``,
+              value: `\`\`\`${client.user.createdAt}\`\`\``,
               inline: true
             },
             {
               name: "Creator's tag",
-              value: "\`LunaTheFloof#8447\`",
+              value: "\`\`\`LunaTheFloof#8447\`\`\`",
               inline: true
             },
             {
@@ -119,7 +119,7 @@ client.on("message", async message => {
           )
           .setFooter("Created by LunaTheFloof#8447")
           .setTimestamp();
-      return message.channel.send(aboutEmbed);
+      return message.channel.send(aboutEmbed).catch(err => console.log(`There was an error running the about command ${err}`));
   }
 
   for (let i in phrases) {
@@ -128,10 +128,10 @@ client.on("message", async message => {
   let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
   switch (num) {
     case 20:
-      message.channel.send(`${message.author} is a bit of a sussy baka >_<`);
+      message.channel.send(`${message.author} is a bit of a sussy baka >_<`).catch(err => console.log(`There was an error running the sussy baka. ${err}`));
       return;
     case 10:
-      message.channel.send(`${message.author} is looking kinda sussy 😳`);
+      message.channel.send(`${message.author} is looking kinda sussy 😳`).catch(err => console.log(`There was an error running the sussy. ${err}`));
       return;
   }
 });
