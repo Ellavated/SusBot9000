@@ -5,7 +5,7 @@ const {
 const client = new Client();
 const token = process.env.TOKEN;
 
-// Array<String> here
+// string[] here
 
 const phrases = [
   "sus",
