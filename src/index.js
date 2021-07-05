@@ -16,15 +16,29 @@ const phrases = [
   "amoung",
   "amog",
   "imposter",
+  "impostor",
   "impasta",
-  "amogus"
+  "amogus",
+  "vented",
+  "vent",
+  "electrical",
+  "navigation",
+  "nav",
+  "polus",
+  "mira",
+  "mirahq",
+  "airship",
+  "skeld"
 ];
 
 const replies = [
   "haha sus xD", 
   "yoo thats kinda sus bro", 
   "is the sussy imposter lmao",
-  "vented in electrical"
+  "vented in electrical",
+  "was caught faking a task",
+  "is a sussy baka",
+  "you've been acting kinda sus lately",
 ];
 
 // functions here
