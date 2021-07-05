@@ -41,7 +41,7 @@ const replies = [
   "you've been acting kinda sus lately",
 ];
 
-// functions here
+// FUNCTIONS HERE
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
