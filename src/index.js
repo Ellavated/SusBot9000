@@ -142,10 +142,10 @@ client.on("message", async message => {
   let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
   switch (num) {
     case 20:
-      message.channel.send(`${message.author} is a bit of a sussy baka >_<`).catch(err => console.log(`There was an error running the sussy baka. ${err}`));
+      message.channel.send(`<@${message.author.id}> is a bit of a sussy baka >_<`).catch(err => console.log(`There was an error running the sussy baka. ${err}`));
       return;
     case 10:
-      message.channel.send(`${message.author} is looking kinda sussy 😳`).catch(err => console.log(`There was an error running the sussy. ${err}`));
+      message.channel.send(`<@${message.author.id}> is looking kinda sussy 😳`).catch(err => console.log(`There was an error running the sussy. ${err}`));
       return;
   }
 });
