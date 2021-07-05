@@ -39,6 +39,9 @@ const replies = [
   "was caught faking a task",
   "is a sussy baka",
   "you've been acting kinda sus lately",
+  "sustacular",
+  "susamanjaro",
+  "Sussimus prime"
 ];
 
 // FUNCTIONS HERE
