@@ -41,7 +41,8 @@ const replies = [
   "you've been acting kinda sus lately",
   "sustacular",
   "susamanjaro",
-  "Sussimus prime"
+  "Sussimus prime",
+  "fine... I guess you are my sussy baka v_v"
 ];
 
 // FUNCTIONS HERE
