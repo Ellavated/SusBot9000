@@ -1,6 +1,7 @@
 require("dotenv").config();
 const {
-  Client, MessageEmbed
+  Client,
+  MessageEmbed
 } = require("discord.js");
 const client = new Client();
 const token = process.env.TOKEN;
@@ -32,8 +33,8 @@ const phrases = [
 ];
 
 const replies = [
-  "haha sus xD", 
-  "yoo thats kinda sus bro", 
+  "haha sus xD",
+  "yoo thats kinda sus bro",
   "is the sussy imposter lmao",
   "vented in electrical",
   "was caught faking a task",
@@ -90,53 +91,44 @@ client.on("message", async message => {
       return message.channel.send(helpEmbed).catch(err => console.log(`There was an error running the help command. ${err}`));
     case "-about": // about command
       let aboutEmbed = new MessageEmbed()
-          .setColor("PURPLE")
-          .setTitle("About me")
-          .setThumbnail(client.user.displayAvatarURL())
-          .addFields(
-            {
-              name: "Servers",
-              value: `\`\`\`Serving ${client.guilds.cache.size} servers.\`\`\``,
-              inline: true
-            },
-            {
-              name: "Channels",
-              value: `\`\`\`Observing ${client.channels.cache.size} channels\`\`\``,
-              inline: true
-            },
-            {
-              name: "Users",
-              value: `\`\`\`Watching ${client.users.cache.size} users\`\`\``,
-              inline: true
-            },
-            {
-              name: "Ping",
-              value: `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``,
-              inline: true
-            },
-            {
-              name: "Join Data",
-              value: `\`\`\`${client.user.createdAt}\`\`\``,
-              inline: true
-            },
-            {
-              name: "Creator's tag",
-              value: "\`\`\`LunaTheFloof#8447\`\`\`",
-              inline: true
-            },
-            {
-              name: "Invite Link",
-              value: "[Link](https://discord.com/api/oauth2/authorize?client_id=837901615612559401&permissions=330816&scope=bot)",
-              inline: true
-            },
-            {
-              name: "GitHub Repository",
-              value: "[Link](https://github.com/LunasAWolf/SusBot9000)",
-              inline: true
-            }
-          )
-          .setFooter("Created by LunaTheFloof#8447")
-          .setTimestamp();
+        .setColor("PURPLE")
+        .setTitle("About me")
+        .setThumbnail(client.user.displayAvatarURL())
+        .addFields({
+          name: "Servers",
+          value: `\`\`\`Serving ${client.guilds.cache.size} servers.\`\`\``,
+          inline: true
+        }, {
+          name: "Channels",
+          value: `\`\`\`Observing ${client.channels.cache.size} channels\`\`\``,
+          inline: true
+        }, {
+          name: "Users",
+          value: `\`\`\`Watching ${client.users.cache.size} users\`\`\``,
+          inline: true
+        }, {
+          name: "Ping",
+          value: `\`\`\`${Math.round(client.ws.ping)}ms\`\`\``,
+          inline: true
+        }, {
+          name: "Join Data",
+          value: `\`\`\`${client.user.createdAt}\`\`\``,
+          inline: true
+        }, {
+          name: "Creator's tag",
+          value: "\`\`\`LunaTheFloof#8447\`\`\`",
+          inline: true
+        }, {
+          name: "Invite Link",
+          value: "[Link](https://discord.com/api/oauth2/authorize?client_id=837901615612559401&permissions=330816&scope=bot)",
+          inline: true
+        }, {
+          name: "GitHub Repository",
+          value: "[Link](https://github.com/LunasAWolf/SusBot9000)",
+          inline: true
+        })
+        .setFooter("Created by LunaTheFloof#8447")
+        .setTimestamp();
       return message.channel.send(aboutEmbed).catch(err => console.log(`There was an error running the about command ${err}`));
   }
 
