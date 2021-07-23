@@ -60,8 +60,8 @@ client.login(token);
 
 client.on("ready", () => {
   console.log(`${client.user.username} | now online!`);
-  client.user.setActivity("the hit game Among Us", {
-    type: "PLAYING"
+  client.user.setActivity("Alix be the sussy impostor amogus", {
+    type: "WATCHING"
   });
 });
 
@@ -88,7 +88,8 @@ client.on("message", async message => {
         .addField("Commands", "\`-about\` - gives info about the bot")
         .setFooter(`Created by LunaTheFloof#8447`)
         .setTimestamp();
-      return message.channel.send(helpEmbed).catch(err => console.log(`There was an error running the help command. ${err}`));
+      return message.channel.send(helpEmbed)
+        .catch(err => console.log(`There was an error running the help command. ${err}`));
     case "-about": // about command
       let aboutEmbed = new MessageEmbed()
         .setColor("PURPLE")
@@ -129,19 +130,24 @@ client.on("message", async message => {
         })
         .setFooter("Created by LunaTheFloof#8447")
         .setTimestamp();
-      return message.channel.send(aboutEmbed).catch(err => console.log(`There was an error running the about command ${err}`));
+      return message.channel.send(aboutEmbed)
+        .catch(err => console.log(`There was an error running the about command ${err}`));
   }
 
   for (let i in phrases) {
     if (args.includes(phrases[i].toLowerCase())) return message.reply(`${replies[Math.floor(Math.random() * replies.length)]}`);
   }
-  let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
-  switch (num) {
-    case 20:
-      message.channel.send(`<@${message.author.id}> is a bit of a sussy baka >_<`).catch(err => console.log(`There was an error running the sussy baka. ${err}`));
-      return;
-    case 10:
-      message.channel.send(`<@${message.author.id}> is looking kinda sussy 😳`).catch(err => console.log(`There was an error running the sussy. ${err}`));
-      return;
+  if (message.guild.me.hasPermission("SEND_MESSAGES")) {
+    let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
+    switch (num) {
+      case 20:
+        message.channel.send(`<@${message.author.id}> is a bit of a sussy baka >_<`)
+          .catch(err => console.log(`There was an error running the sussy baka. ${err}`));
+        return;
+      case 10:
+        message.channel.send(`<@${message.author.id}> is looking kinda sussy 😳`)
+          .catch(err => console.log(`There was an error running the sussy. ${err}`));
+        return;
+    }
   }
 });
