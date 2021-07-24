@@ -132,6 +132,8 @@ client.on("message", async message => {
         .setTimestamp();
       return message.channel.send(aboutEmbed)
         .catch(err => console.log(`There was an error running the about command ${err}`));
+    case "-thanks": // thanks command
+      return message.channel.send("Thanks for using SusBot9000 :)");
   }
 
   for (let i in phrases) {
