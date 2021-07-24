@@ -29,7 +29,8 @@ const phrases = [
   "mira",
   "mirahq",
   "airship",
-  "skeld"
+  "skeld",
+  "suwus"
 ];
 
 const replies = [
