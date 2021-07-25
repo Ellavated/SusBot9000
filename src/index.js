@@ -90,6 +90,7 @@ client.on("message", async message => {
   const cmd = args.shift().toLowerCase();
   const command = client.commands.get(cmd);
   if (command) {
+    if (!message.content.startsWith(prefix)) return;
     try {
       command.run(message, client, args);
     } catch (err) {
