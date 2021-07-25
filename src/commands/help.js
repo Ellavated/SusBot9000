@@ -1,4 +1,6 @@
-const { MessageEmbed } = require("discord.js");
+const {
+  MessageEmbed
+} = require("discord.js");
 
 module.exports = {
   name: "help",
@@ -13,6 +15,6 @@ module.exports = {
       .setFooter(`Created by LunaTheFloof#8447`)
       .setTimestamp();
     return message.channel.send(helpEmbed)
-    .catch(err => console.log(`There was an error running the help command. ${err}`));
+      .catch(err => console.log(`There was an error running the help command. ${err}`));
   }
 };
