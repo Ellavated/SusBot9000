@@ -84,7 +84,7 @@ client.on("message", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
   if (!message.guild.me.hasPermission("SEND_MESSAGES") || !message.guild.me.hasPermission("VIEW_CHANNEL")) return;
-  // L - this is still causing issues "There was an error running... DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
+  // L - this is still causing issues "DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
 
   const args = message.content.slice(prefix.length).trim().split(/ + /g);
   const cmd = args.shift().toLowerCase();
@@ -107,12 +107,10 @@ client.on("message", async message => {
       let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
       switch (num) {
         case 20:
-          message.channel.send(`<@${message.author.id}> is a bit of a sussy baka >_<`)
-            .catch(err => console.log(`There was an error running the sussy baka. ${err}`));
+          message.channel.send(`<@${message.author.id}> is a bit of a sussy baka >_<`).catch(err => console.error(err));
           return;
         case 10:
-          message.channel.send(`<@${message.author.id}> is looking kinda sussy 😳`)
-            .catch(err => console.log(`There was an error running the sussy. ${err}`));
+          message.channel.send(`<@${message.author.id}> is looking kinda sussy 😳`).catch(err => console.error(err));
           return;
       }
     }
