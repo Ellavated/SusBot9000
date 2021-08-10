@@ -14,7 +14,7 @@ module.exports = {
       .addField("Commands", "\`-about\` - gives info about the bot")
       .setFooter(`Created by LunaTheFloof#8447`)
       .setTimestamp();
-    return message.channel.send(helpEmbed)
+    return message.channel.send({ embeds: [helpEmbed] })
       .catch(err => console.log(`There was an error running the help command. ${err}`));
   }
 };

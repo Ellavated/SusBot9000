@@ -1,10 +1,17 @@
 require("dotenv").config();
 const {
   Client,
-  Collection
+  Collection,
+  Intents
 } = require("discord.js");
 const fs = require("fs");
-const client = new Client();
+const client = new Client({
+  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+  allowedMentions: {
+    parse: ['users', 'roles'],
+    repliedUser: false
+  }
+});
 client.commands = new Collection();
 const token = process.env.TOKEN;
 const prefix = "-";
@@ -32,7 +39,9 @@ const phrases = [
   "mirahq",
   "airship",
   "skeld",
-  "suwus"
+  "suwus",
+  "suspicious",
+  "amogusuwu"
 ];
 
 // list of possible replies
@@ -80,10 +89,10 @@ client.on("guildDelete", guild => {
   console.log(`${client.user.username} | Removed from guild ${guild.name}`);
 });
 
-client.on("message", async message => {
+client.on("messageCreate", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
-  if (!message.guild.me.hasPermission("SEND_MESSAGES") || !message.guild.me.hasPermission("VIEW_CHANNEL")) return;
+  if (!message.guild.me.permissions.has("SEND_MESSAGES") || !message.guild.me.permissions.has("VIEW_CHANNEL")) return;
   // L - this is still causing issues "DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
 
   const args = message.content.slice(prefix.length).trim().split(/ + /g);
@@ -95,22 +104,22 @@ client.on("message", async message => {
       command.run(message, client, args);
     } catch (err) {
       console.error(err);
-      message.reply(`There was an error trying to execute that command.\n\`\`\`${err}\`\`\``);
+      message.reply({ content: `There was an error trying to execute that command.\n\`\`\`${err}\`\`\``});
       return;
     }
   } else {
     const words = message.content.toLowerCase().split(" ");
     for (let i in phrases) {
-      if (words.includes(phrases[i].toLowerCase())) return message.reply(`${replies[Math.floor(Math.random() * replies.length)]}`);
+      if (words.includes(phrases[i].toLowerCase())) return message.reply({ content: `${replies[Math.floor(Math.random() * replies.length)]}`, repliedUser: true });
     }
-    if (message.guild.me.hasPermission("SEND_MESSAGES")) {
+    if (message.guild.me.permissions.has("SEND_MESSAGES")) {
       let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
       switch (num) {
         case 20:
-          message.channel.send(`<@${message.author.id}> is a bit of a sussy baka >_<`).catch(err => console.error(err));
+          message.channel.send({ content: `<@${message.author.id}> is a bit of a sussy baka >_<`}).catch(err => console.error(err));
           return;
         case 10:
-          message.channel.send(`<@${message.author.id}> is looking kinda sussy 😳`).catch(err => console.error(err));
+          message.channel.send({ content: `<@${message.author.id}> is looking kinda sussy 😳`}).catch(err => console.error(err));
           return;
       }
     }

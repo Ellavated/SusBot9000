@@ -41,7 +41,7 @@ module.exports = {
       })
       .setFooter("Created by LunaTheFloof#8447")
       .setTimestamp();
-    return message.channel.send(aboutEmbed)
+    return message.channel.send({ embeds: [aboutEmbed] })
       .catch(err => console.log(`There was an error running the about command ${err}`));
   }
 };
