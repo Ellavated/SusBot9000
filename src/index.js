@@ -128,7 +128,7 @@ client.on("messageCreate", async message => {
         repliedUser: true
       });
     }
-    if (message.guild.me.permissions.has("SEND_MESSAGES") && guild_ids.has(message.guild.id)) {
+    if (message.guild.me.permissions.has("SEND_MESSAGES") && guild_ids.includes(message.guild.id)) {
       let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
       switch (num) {
         case 20:
