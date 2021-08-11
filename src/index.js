@@ -129,20 +129,5 @@ client.on("messageCreate", async message => {
         repliedUser: true
       });
     }
-    if (message.guild.me.permissions.has("SEND_MESSAGES") && guild_ids.includes(message.guild.id)) {
-      let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
-      switch (num) {
-        case 20:
-          message.reply({
-            content: `<@${message.author.id}> is a bit of a sussy baka >_<`
-          }).catch(err => console.error(err));
-          return;
-        case 10:
-          message.reply({
-            content: `<@${message.author.id}> is looking kinda sussy 😳`
-          }).catch(err => console.error(err));
-          return;
-      }
-    }
   }
 });
