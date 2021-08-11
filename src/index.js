@@ -16,6 +16,8 @@ client.commands = new Collection();
 const token = process.env.TOKEN;
 const prefix = "-";
 
+// * L - move this to a JSON file or something similar.
+
 // list of phrases the bot will respond too
 const phrases = [
   "sus",
@@ -25,6 +27,7 @@ const phrases = [
   "amoungus",
   "amoung",
   "amog",
+  "among",
   "imposter",
   "impostor",
   "impasta",
@@ -41,7 +44,8 @@ const phrases = [
   "skeld",
   "suwus",
   "suspicious",
-  "amogusuwu"
+  "amogusuwu",
+  "soos"
 ];
 
 // list of possible replies
@@ -57,6 +61,12 @@ const replies = [
   "susamanjaro",
   "Sussimus prime",
   "fine... I guess you are my sussy baka v_v"
+];
+
+// list of guilds with random replies hard enabled.
+const guild_ids = [
+  "399442822480003083", // Gamers(TM) Inc.
+  "792693684453769237" // dev server
 ];
 
 function getRandomInt(min, max) {
@@ -93,7 +103,8 @@ client.on("messageCreate", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
   if (!message.guild.me.permissions.has("SEND_MESSAGES") || !message.guild.me.permissions.has("VIEW_CHANNEL")) return;
-  // L - this is still causing issues "DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
+  // ! L - this is still causing issues "DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
+  //? L - hopefully discord.js v13 has fixed this issue. requires further testing.
 
   const args = message.content.slice(prefix.length).trim().split(/ + /g);
   const cmd = args.shift().toLowerCase();
@@ -104,22 +115,31 @@ client.on("messageCreate", async message => {
       command.run(message, client, args);
     } catch (err) {
       console.error(err);
-      message.reply({ content: `There was an error trying to execute that command.\n\`\`\`${err}\`\`\``});
+      message.reply({
+        content: `There was an error trying to execute that command.\n\`\`\`${err}\`\`\``
+      });
       return;
     }
   } else {
     const words = message.content.toLowerCase().split(" ");
     for (let i in phrases) {
-      if (words.includes(phrases[i].toLowerCase())) return message.reply({ content: `${replies[Math.floor(Math.random() * replies.length)]}`, repliedUser: true });
+      if (words.includes(phrases[i].toLowerCase())) return message.reply({
+        content: `${replies[Math.floor(Math.random() * replies.length)]}`,
+        repliedUser: true
+      });
     }
-    if (message.guild.me.permissions.has("SEND_MESSAGES")) {
+    if (message.guild.me.permissions.has("SEND_MESSAGES") && guild_ids.has(message.guild.id)) {
       let num = getRandomInt(1, 101); // returns any integer between 1 and 100.
       switch (num) {
         case 20:
-          message.channel.send({ content: `<@${message.author.id}> is a bit of a sussy baka >_<`}).catch(err => console.error(err));
+          message.reply({
+            content: `<@${message.author.id}> is a bit of a sussy baka >_<`
+          }).catch(err => console.error(err));
           return;
         case 10:
-          message.channel.send({ content: `<@${message.author.id}> is looking kinda sussy 😳`}).catch(err => console.error(err));
+          message.reply({
+            content: `<@${message.author.id}> is looking kinda sussy 😳`
+          }).catch(err => console.error(err));
           return;
       }
     }
