@@ -106,19 +106,20 @@ client.on("messageCreate", async message => {
   // ! L - this is still causing issues "DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
   //? L - hopefully discord.js v13 has fixed this issue. requires further testing.
 
-  const args = message.content.slice(prefix.length).trim().split(/ + /g);
-  const cmd = args.shift().toLowerCase();
-  const command = client.commands.get(cmd);
-  if (command) {
-    if (!message.content.startsWith(prefix)) return;
-    try {
-      command.run(message, client, args);
-    } catch (err) {
-      console.error(err);
-      message.reply({
-        content: `There was an error trying to execute that command.\n\`\`\`${err}\`\`\``
-      });
-      return;
+  if (message.content.startsWith(prefix)) {
+    const args = message.content.slice(prefix.length).trim().split(/ + /g);
+    const cmd = args.shift().toLowerCase();
+    const command = client.commands.get(cmd);
+    if (command) {
+      try {
+        command.run(message, client, args);
+      } catch (err) {
+        console.error(err);
+        message.reply({
+          content: `There was an error trying to execute that command.\n\`\`\`${err}\`\`\``
+        });
+        return;
+      }
     }
   } else {
     const words = message.content.toLowerCase().split(" ");
