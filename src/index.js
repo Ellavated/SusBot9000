@@ -1,22 +1,18 @@
-require("dotenv").config();
-const {
-  Client,
-  Collection,
-  Intents
-} = require("discord.js");
-const fs = require("fs");
+require('dotenv').config();
+const { Client, Collection } = require('discord.js');
+const fs = require('fs');
+
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+  intents: [ 'GUILDS', 'GUILD_MESSAGES' ],
   allowedMentions: {
     parse: ['users', 'roles'],
     repliedUser: false
   }
 });
 client.commands = new Collection();
+
 const token = process.env.TOKEN;
 const prefix = "-";
-
-// * L - move this to a JSON file or something similar.
 
 // list of phrases the bot will respond too
 const phrases = [
@@ -75,20 +71,20 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
-// initialize the commands
+// checks for and enables the commands
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith(".js"));
 for (let file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
 
+// log in the client
 client.login(token);
 
+// vvv client events vvv
 client.on("ready", () => {
   console.log(`${client.user.username} | now online!`);
-  client.user.setActivity("Alix be the sussy impostor amogus", {
-    type: "WATCHING"
-  });
+  client.user.setActivity("the hit game Among Us", { type: "PLAYING" });
 });
 
 client.on("guildCreate", guild => {
@@ -102,9 +98,10 @@ client.on("guildDelete", guild => {
 client.on("messageCreate", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
-  if (!message.guild.me.permissions.has("SEND_MESSAGES") || !message.guild.me.permissions.has("VIEW_CHANNEL")) return;
-  // ! L - this is still causing issues "DiscordAPIError: Missing Permissions". Might need to specify to move bot role to top or higher than user roles?
-  //? L - hopefully discord.js v13 has fixed this issue. requires further testing.
+  if (!message.guild.me.permissions.has("SEND_MESSAGES") || !message.guild.me.permissions.has("VIEW_CHANNEL") || !message.guild.me.permissions.has("READ_MESSAGE_HISTORY")) return;
+
+  // prevents discordAPI error code 160002
+  if (message.channel.id == "702109440559546368") return;
 
   if (message.content.startsWith(prefix)) {
     const args = message.content.slice(prefix.length).trim().split(/ + /g);
@@ -128,6 +125,22 @@ client.on("messageCreate", async message => {
         content: `${replies[Math.floor(Math.random() * replies.length)]}`,
         repliedUser: true
       });
+    }
+    // * L - need to decide what to do with these. May just delete them
+    if (message.guild.me.permissions.has("SEND_MESSAGES") && guild_ids.includes(message.guild.id)) {
+      let num = getRandomInt(1, 501); // returns any integer between 1 and 100.
+      switch (num) {
+        case 20:
+          message.reply({
+            content: `<@${message.author.id}> is a bit of a sussy baka >_<`
+          }).catch(err => console.error(err));
+          return;
+        case 10:
+          message.reply({
+            content: `<@${message.author.id}> is looking kinda sussy 😳`
+          }).catch(err => console.error(err));
+          return;
+      }
     }
   }
 });
