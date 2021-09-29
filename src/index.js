@@ -62,18 +62,6 @@ const replies = [
   "fine... I guess you are my sussy baka v_v"
 ];
 
-// list of guilds with random replies hard enabled.
-const guild_ids = [
-  "399442822480003083", // Gamers(TM) Inc.
-  "792693684453769237" // dev server
-];
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
-
 // checks for and enables the commands
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith(".js"));
 for (let file of commandFiles) {
@@ -131,22 +119,6 @@ client.on("messageCreate", async message => {
         console.log(err);
         return;
       });
-    }
-    // * L - need to decide what to do with these. May just delete them
-    if (message.guild.me.permissions.has("SEND_MESSAGES") && guild_ids.includes(message.guild.id)) {
-      let num = getRandomInt(1, 501); // returns any integer between 1 and 100.
-      switch (num) {
-        case 20:
-          message.reply({
-            content: `<@${message.author.id}> is a bit of a sussy baka >_<`
-          }).catch(err => console.error(err));
-          return;
-        case 10:
-          message.reply({
-            content: `<@${message.author.id}> is looking kinda sussy 😳`
-          }).catch(err => console.error(err));
-          return;
-      }
     }
   }
 });
