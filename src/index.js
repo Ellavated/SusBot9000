@@ -6,7 +6,7 @@ const {
 const fs = require('fs');
 
 const client = new Client({
-  intents: ['GUILDS', 'GUILD_MESSAGES'],
+  intents: ["GUILDS", "GUILD_MESSAGES"],
   allowedMentions: {
     parse: ['users', 'roles'],
     repliedUser: false
@@ -17,50 +17,9 @@ client.commands = new Collection();
 const token = process.env.TOKEN;
 const prefix = "-";
 
-// list of phrases the bot will respond too
-const phrases = [
-  "sus",
-  "sussy",
-  "amongus",
-  "amugus",
-  "amoungus",
-  "amoung",
-  "amog",
-  "among",
-  "imposter",
-  "impostor",
-  "impasta",
-  "amogus",
-  "vented",
-  "vent",
-  "electrical",
-  "navigation",
-  "nav",
-  "polus",
-  "mira",
-  "mirahq",
-  "airship",
-  "skeld",
-  "suwus",
-  "suspicious",
-  "amogusuwu",
-  "soos"
-];
-
-// list of possible replies
-const replies = [
-  "haha sus xD",
-  "yoo thats kinda sus bro",
-  "is the sussy imposter lmao",
-  "vented in electrical",
-  "was caught faking a task",
-  "is a sussy baka",
-  "you've been acting kinda sus lately",
-  "sustacular",
-  "susamanjaro",
-  "Sussimus prime",
-  "fine... I guess you are my sussy baka v_v"
-];
+// Gets the lists of replies and phrases.
+const phrases = require("./json/phrases.json");
+const replies = require("./json/replies.json");
 
 // checks for and enables the commands
 const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith(".js"));
@@ -88,6 +47,12 @@ client.on("guildDelete", guild => {
   console.log(`${client.user.username} | Removed from guild ${guild.name}`);
 });
 
+// TODO: Change all commands into slash commands (interactions).
+client.on("interactionCreate", interaction => {
+  if (!interaction.isCommand) return;
+  
+});
+
 client.on("messageCreate", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
@@ -113,7 +78,7 @@ client.on("messageCreate", async message => {
     const words = message.content.toLowerCase().split(" ");
     for (let i in phrases) {
       if (words.includes(phrases[i].toLowerCase())) return message.reply({
-        content: `${replies[Math.floor(Math.random() * replies.length)]}`,
+        content: `${replies[Math.floof(Math.random() * replies.length)]}`,
         repliedUser: true
       }).catch(err => {
         console.log(err);
