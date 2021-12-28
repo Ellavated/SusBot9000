@@ -78,7 +78,7 @@ client.on("messageCreate", async message => {
     const words = message.content.toLowerCase().split(" ");
     for (let i in phrases) {
       if (words.includes(phrases[i].toLowerCase())) return message.reply({
-        content: `${replies[Math.floof(Math.random() * replies.length)]}`,
+        content: `${replies[Math.floor(Math.random() * replies.length)]}`,
         repliedUser: true
       }).catch(err => {
         console.log(err);
