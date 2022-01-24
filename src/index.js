@@ -41,6 +41,18 @@ client.on("ready", () => {
 
 client.on("guildCreate", guild => {
   console.log(`${client.user.username} | Added to guild ${guild.name}`);
+
+  /**
+   * Thanks for inviting message
+   */
+  let channel = guild.systemChannel;
+  if (!channel) return;
+  channel.send({
+    embeds: [{
+      color: "RED",
+      description: "Thank you for inviting me to your server!"
+    }]
+  })
 });
 
 client.on("guildDelete", guild => {
@@ -49,7 +61,6 @@ client.on("guildDelete", guild => {
 
 // TODO: Change all commands into slash commands (interactions).
 client.on("interactionCreate", interaction => {
-  if (!interaction.isCommand) return;
   
 });
 
