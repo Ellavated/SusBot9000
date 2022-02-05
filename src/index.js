@@ -45,14 +45,18 @@ client.on("guildCreate", guild => {
   /**
    * Thanks for inviting message
    */
-  let channel = guild.systemChannel;
-  if (!channel) return;
-  channel.send({
-    embeds: [{
-      color: "RED",
-      description: "Thank you for inviting me to your server!"
-    }]
-  })
+  try {
+    let channel = guild.systemChannel;
+    if (!channel) return;
+    else channel.send({
+      embeds: [{
+        color: "RED",
+        description: "Thank you for inviting me to your server!"
+      }]
+    });
+  } catch (error) {
+    return;
+  }
 });
 
 client.on("guildDelete", guild => {
@@ -67,6 +71,7 @@ client.on("interactionCreate", interaction => {
 client.on("messageCreate", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
+  if (message.channel.type == "GUILD_PUBLIC_THREAD" || message.channel.type == "GUILD_PRIVATE_THREAD") return;
   if (!message.guild.me.permissions.has("SEND_MESSAGES") || !message.guild.me.permissions.has("VIEW_CHANNEL") || !message.guild.me.permissions.has("READ_MESSAGE_HISTORY")) return;
   if (!message.guild.me.permissionsIn(message.channel.id).has("READ_MESSAGE_HISTORY") || !message.guild.me.permissionsIn(message.channel.id).has("SEND_MESSAGES") || !message.guild.me.permissionsIn(message.channel.id).has("VIEW_CHANNEL")) return;
 
