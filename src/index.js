@@ -39,35 +39,6 @@ client.on("ready", () => {
   });
 });
 
-client.on("guildCreate", guild => {
-  console.log(`${client.user.username} | Added to guild ${guild.name}`);
-
-  /**
-   * Thanks for inviting message
-   */
-  try {
-    let channel = guild.systemChannel;
-    if (!channel) return;
-    else channel.send({
-      embeds: [{
-        color: "RED",
-        description: "Thank you for inviting me to your server!"
-      }]
-    });
-  } catch (error) {
-    return;
-  }
-});
-
-client.on("guildDelete", guild => {
-  console.log(`${client.user.username} | Removed from guild ${guild.name}`);
-});
-
-// TODO: Change all commands into slash commands (interactions).
-client.on("interactionCreate", interaction => {
-  
-});
-
 client.on("messageCreate", async message => {
   // checks
   if (message.author.bot || !message.guild) return;
