@@ -1,8 +1,11 @@
 # SusBot9000
 A discord.js bot that is kinda sus
 
-# Usage of this code
-As my application to get the "message content" privileged intents was denied, on April 30th I will no longer be hosting
-this bot myself. After this date this code will be free to be used, modified, and hosted on your own bots.
+Thank you for supporting this stupid little project of mine. - Yokai/Luna
 
-Thanks for supporting this stupid project of mine :)
+## Usage
+You have my permission to host this bot on your own for your own purposes so long as it remains withing the license provided.
+
+## Message Content Privilege
+When Discord officially makes message content a privileged intent I will be forced to stop hosting this bot myself. At that time,
+you are more than welcome to host this bot yourself.
