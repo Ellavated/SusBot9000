@@ -12,7 +12,7 @@ module.exports = {
       .setThumbnail(client.user.displayAvatarURL())
       .setDescription("To use to bot simply type 'sus'! There is even a rare chance for a special message when you type :3")
       .addField("Commands", "\`-about\` - gives info about the bot")
-      .setFooter(`Created by LunaTheFloof#8447`)
+      .setFooter(`Created by Lunaaa#8447`)
       .setTimestamp();
     return message.channel.send({ embeds: [helpEmbed] })
       .catch(err => console.log(`There was an error running the help command. ${err}`));

@@ -13,7 +13,7 @@ module.exports = {
       .setThumbnail(client.user.displayAvatarURL())
       .addFields({
         name: "🛠 Developer",
-        value: "```LunaTheFloof#8447 (136631672425807872)```"
+        value: "```Lunaaa#8447 (136631672425807872)```"
       }, {
         name: "DiscordJS Version",
         value: `\`\`\`${version}\`\`\``
@@ -39,7 +39,7 @@ module.exports = {
         value: "[Link](https://github.com/LunasAWolf/SusBot9000)",
         inline: true
       })
-      .setFooter("Created by LunaTheFloof#8447")
+      .setFooter("Created by Lunaaa#8447")
       .setTimestamp();
     return message.channel.send({ embeds: [aboutEmbed] })
       .catch(err => console.log(`There was an error running the about command ${err}`));
