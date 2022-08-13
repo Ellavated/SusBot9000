@@ -1,8 +1,5 @@
 require('dotenv').config();
-const {
-  Client,
-  Collection
-} = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const fs = require('fs');
 
 const client = new Client({
@@ -41,10 +38,22 @@ client.on("ready", () => {
 
 client.on("messageCreate", async message => {
   // checks
-  if (message.author.bot || !message.guild) return;
-  if (message.channel.type == "GUILD_PUBLIC_THREAD" || message.channel.type == "GUILD_PRIVATE_THREAD") return;
-  if (!message.guild.me.permissions.has("SEND_MESSAGES") || !message.guild.me.permissions.has("VIEW_CHANNEL") || !message.guild.me.permissions.has("READ_MESSAGE_HISTORY")) return;
-  if (!message.guild.me.permissionsIn(message.channel.id).has("READ_MESSAGE_HISTORY") || !message.guild.me.permissionsIn(message.channel.id).has("SEND_MESSAGES") || !message.guild.me.permissionsIn(message.channel.id).has("VIEW_CHANNEL")) return;
+  if (message.author.bot) return;
+  if (message.channel.type != "GUILD_TEXT") return;
+  if (
+    !message.guild.me.permissions.has("SEND_MESSAGES") || 
+    !message.guild.me.permissions.has("VIEW_CHANNEL") || 
+    !message.guild.me.permissions.has("READ_MESSAGE_HISTORY")
+  ) return;
+  if (
+    !message.guild.me.permissionsIn(message.channel).has("READ_MESSAGE_HISTORY") || 
+    !message.guild.me.permissionsIn(message.channel).has("SEND_MESSAGES") ||
+    !message.guild.me.permissionsIn(message.channel).has("VIEW_CHANNEL")
+  ) return;
+
+  // TODO: this error still occurs regularly
+  // https://i.imgur.com/sYbIMsn.png
+  // https://i.imgur.com/9uJuddN.png
 
   if (message.content.startsWith(prefix)) {
     const args = message.content.slice(prefix.length).trim().split(/ + /g);
